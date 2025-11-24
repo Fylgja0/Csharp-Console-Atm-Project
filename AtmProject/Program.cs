@@ -7,6 +7,37 @@ namespace AtmProject
         static double balance = 2500.00;
         static void Main(string[] args)
         {
+            string password = "1235";
+            int attempts = 3;
+            bool isLoginSuccess = false;
+            while (attempts > 0)
+            {
+                Console.Clear();
+                Console.WriteLine("\t--- Welcome to Global Bank ---\t");
+                Console.Write("Please Enter Your PIN: ");
+                string inputPassword = Console.ReadLine();
+
+                if (inputPassword == password)
+                {
+                    Console.WriteLine("Login Successful!");
+                    isLoginSuccess = true;
+                    System.Threading.Thread.Sleep(1000);
+                    break;
+                }
+                else
+                {
+                    attempts--;
+                    Console.WriteLine("Wrong PIN! Remaining Attempts: " + attempts);
+                    Console.ReadKey();
+                }
+            }
+
+            if (isLoginSuccess == false)
+            {
+                Console.WriteLine("\nACCOUNT BLOCKED! TOO MANY FAILED ATTEMPTS!");
+                return;
+            }
+
             bool isRunning = true;
             while(isRunning)
             {
